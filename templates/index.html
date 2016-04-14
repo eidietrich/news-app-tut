@@ -2,6 +2,9 @@
 <html lang="en">
     <head>
       <title>First News App Tutorial</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
       <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -70,7 +73,16 @@
             {% endfor %}
           ]
         };
+        var blackIcon = L.Icon.extend({
+          options: {
+            iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+            iconSize: [24, 24]
+          }
+        });
         var dataLayer = L.geoJson(data, {
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {icon: new blackIcon()});
+          },
           onEachFeature: function(feature, layer) {
             layer.bindPopup(
               '<a href="' + feature.properties.id + '/">' +
