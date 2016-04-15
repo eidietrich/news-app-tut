@@ -8,9 +8,9 @@
     </head>
     <body>
         <nav>
-            <a href="http://first-news-app.readthedocs.org/">
+            <!-- <a href="http://first-news-app.readthedocs.org/">
                 <img src="{{ url_for('static', filename='irelogo.png') }}">
-            </a>
+            </a> -->
         </nav>
         <header>
             <h1>{{ object.full_name }}, a {{ object.age }} year old, {{ object.race|lower }} {{ object.gender|lower }} died on {{ object.date }}
@@ -27,7 +27,7 @@
             map.addLayer(mapquestLayer);
             var blackIcon = L.Icon.extend({
                 options: {
-                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+                    // iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
                     iconSize: [24, 24]
                 }
             });
